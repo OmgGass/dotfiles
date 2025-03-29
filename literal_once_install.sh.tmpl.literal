@@ -1,0 +1,27 @@
+#!/bin/sh
+
+
+{{ if eq "true" .install.installZsh }}
+	yay -S {{  .order.yay.zsh | join " " }} --noconfirm
+{{end}}
+
+{{ if eq "true" .install.installNvim }}
+	yay -S {{  .order.yay.nvim | join " " }} --noconfirm
+	sudo npm i -g {{ .order.npm.nvim | join " "}}
+{{end}}
+
+{{ if eq "true" .install.installHypr }}
+	yay -S {{  .order.yay.hypr | join " " }} --noconfirm
+{{end}}
+
+{{ if eq "true" .install.installFonts }}
+	yay -S {{  .order.yay.fonts | join " " }} --noconfirm
+{{end}}
+
+{{ if eq "true" .install.installThemes }}
+	yay -S {{  .order.yay.themes | join " " }} --noconfirm
+{{end}}
+
+{{ if eq "true" .install.installApps }}
+	yay -S {{  .order.yay.apps | join " " }} --noconfirm
+{{end}}

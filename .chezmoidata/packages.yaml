@@ -9,7 +9,7 @@ packages:
       - "bat"
       - "eza"
       - "p7zip"
-			- "unzip"
+      - "unzip"
     nvim:
       - "neovim"
       - "nodejs"

@@ -7,11 +7,11 @@ plugins = {
 	"nvimtools/none-ls.nvim",
 	"rafamadriz/friendly-snippets",
 
-	require("plugins.catpuccin"),
+	require("plugins.gruvbox"),
+	require("plugins.snacks"),
 	require("plugins.indentline"),
 	require("plugins.lualine"),
 	require("plugins.bufferline"),
-	require("plugins.alpha"),
 	require("plugins.treesitter"),
 	require("plugins.comment"),
 	require("plugins.notify"),
@@ -20,7 +20,6 @@ plugins = {
 	require("plugins.project"),
 	require("plugins.toggleterm"),
 	require("plugins.yazi"),
-	require("plugins.pantran"),
 	require("plugins.kulala"),
 
 	-- Found no better way of doing that
@@ -34,7 +33,6 @@ plugins = {
 	require("plugins.mason"),
 	require("plugins.cmp"),
 	require("plugins.lspcfg"),
-
 	require("plugins.rustacean"),
 	{
 		"tiagovla/scope.nvim",
@@ -55,6 +53,8 @@ plugins = {
 			{ "<C-A-d>", "<cmd>Bdelete!<CR>" },
 		},
 	},
+
+
 	{
 		"uga-rosa/ccc.nvim",
 		config = function()

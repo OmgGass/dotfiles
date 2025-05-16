@@ -45,6 +45,21 @@ plugins = {
 			require("scope").setup()
 		end,
 	},
+
+	{
+  'IogaMaster/neocord',
+  event = "VeryLazy",
+  config = function()
+    require("neocord").setup({
+      logo = "auto",           -- "auto" URL
+      main_image = "language", -- "language" or "logo"
+      show_time = true,        -- time
+      editing_text = "Editing %s", -- files
+      file_explorer_text = "Navigating %s", -- path
+    })
+  end,
+  };
+
 	{
 		"famiu/bufdelete.nvim",
 		event = "VeryLazy",

@@ -13,20 +13,20 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/3af48dbd-25d5-40a2-9819-255019bd>
+  fileSystems."/" = { 
+  device = "/dev/disk/by-uuid/3af48dbd-25d5-40a2-9819-255019bd";
       fsType = "btrfs";
       options = [ "subvol=@" ];
     };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/3af48dbd-25d5-40a2-9819-255019bd>
+  fileSystems."/home" = { 
+  device = "/dev/disk/by-uuid/3af48dbd-25d5-40a2-9819-2550";19bd>
       fsType = "btrfs";
       options = [ "subvol=@home" ];
     };
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/3af48dbd-25d5-40a2-9819-255019bd>
+  fileSystems."/nix" = { 
+  device = "/dev/disk/by-uuid/3af48dbd-25d5-40a2-9819-255019bd";
       fsType = "btrfs";
       options = [ "subvol=@nix" ];
     };

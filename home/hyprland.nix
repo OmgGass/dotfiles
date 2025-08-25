@@ -32,19 +32,6 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    extraConfig = ''
-      exec-once = waypaper --random --backend swww --folder ~/.config/wallpapers
-      exec-once = sh ${./eww/launch.sh}
-      exec-once = nm-applet
-      exec-once = blueman-applet
-      exec-once = ${pkgs.polkit-kde-agent}/lib/polkit-kde-authentication-agent-1
-      
-      
-      exec-once = dunst
-      exec-once = hyprsunset
-    '';
 	  gtk = {
 	    enable = true;
 	    theme = {
@@ -63,12 +50,25 @@
 	    style.name = "gtk2";
 	  };
 
-
-
     programs.eww = {
 	enable = true;
-	configDir = "./eww";
+	configDir = ../eww;
 	};
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    extraConfig = ''
+      exec-once = waypaper --random --backend swww --folder ~/.config/wallpapers
+      exec-once = sh ${./eww/launch.sh}
+      
+      exec-once = blueman-applet
+      exec-once = ${pkgs.polkit-kde-agent}/lib/polkit-kde-authentication-agent-1
+      
+      
+      exec-once = dunst
+      exec-once = hyprsunset
+    '';
+
 
     settings = {
       env = [

@@ -20,7 +20,7 @@
     pavucontrol
     slurp 
     eww
-
+    kdePackages.polkit-kde-agent-1
     socat
     jq
     inotify-tools
@@ -61,7 +61,7 @@
       exec-once = waypaper --random --backend swww --folder ~/.config/wallpapers
       exec-once = sh ${./eww/launch.sh}
       exec-once = blueman-applet
-      exec-once = ${pkgs.polkit-kde-agent}/lib/polkit-kde-authentication-agent-1
+      exec-once = ${pkgs.kdePackages.polkit-kde-agent-1}/lib/polkit-kde-authentication-agent-1 
       exec-once = hyprsunset
     '';
 

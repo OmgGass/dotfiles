@@ -18,11 +18,9 @@
   hardware.bluetooth.enable = true;
   virtualisation.docker.enable = true;
 
-  zramSwap = {
-   enable = true; 
-   memoryPercent = 50;
-   algorithm = "zstd";
-  };
+  zramSwap.enable = true;
+  zramSwap.memoryPercent = 50;
+  zramSwap.algorithm = "zstd";
 
      
   users.users.Garcia = {

@@ -60,12 +60,8 @@
     extraConfig = ''
       exec-once = waypaper --random --backend swww --folder ~/.config/wallpapers
       exec-once = sh ${./eww/launch.sh}
-      
       exec-once = blueman-applet
       exec-once = ${pkgs.polkit-kde-agent}/lib/polkit-kde-authentication-agent-1
-      
-      
-      exec-once = dunst
       exec-once = hyprsunset
     '';
 

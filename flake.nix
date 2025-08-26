@@ -1,6 +1,5 @@
-# /dotfiles/flake.nix
 {
-  description = "Minha configuracao do NixOS";
+  description = "Basic NixOS";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -11,19 +10,18 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations."nixos-btw" = nixpkgs.lib.nixosSystem { # <-- Troque "nixos-btw" pelo seu hostname
+    nixosConfigurations."nixos-btw" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
-        
         ./configuration.nix
-        ./hardware-configuration.nix 
-        
+        ./hardware-configuration.nix
         home-manager.nixosModules.home-manager
         {
+          nixpkgs.config.allowUnfree = true;
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.Garcia = import ./home/home.nix; 
+          home-manager.users.Garcia = import ./home/home.nix;
         }
       ];
     };

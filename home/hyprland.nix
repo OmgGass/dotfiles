@@ -8,7 +8,6 @@
     blueman
     nerd-fonts.jetbrains-mono
     fastfetch
-    waypaper
     catppuccin-cursors.mochaSapphire
     playerctl
     pamixer

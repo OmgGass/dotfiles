@@ -11,7 +11,10 @@
   home.username = "Garcia"; 
   home.homeDirectory = "/home/Garcia"; 
 
-  
+  home.file.".config/wallpapers" = {
+    source = ../home/wallpapers;
+    recursive = true;
+  };
 
   
   home.packages = with pkgs; [

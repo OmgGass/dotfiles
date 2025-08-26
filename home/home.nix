@@ -20,8 +20,9 @@
     firefox
     rofi-wayland
     discord
-    kitty
+    pkgs.kitty
     bitwarden
+    pkgs.eww
   ];
 
   home.stateVersion = "25.05"; # Ou a sua versão

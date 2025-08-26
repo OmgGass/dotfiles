@@ -10,29 +10,35 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/3af48dbd-25d5-40a2-9819-255019bd1659";
-      fsType = "btrfs";
-      options = [ "subvol=@" ];
-    };
+    fileSystems."/" = {
+    device = "/dev/disk/by-uuid/d5e350a2-cae9-4374-bdf2-f23446e9e950";
+    fsType = "btrfs";
+    options = [ "subvol=@" ];
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/3af48dbd-25d5-40a2-9819-255019bd1659";
-      fsType = "btrfs";
-      options = [ "subvol=@home" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/2613-0F65";
+    fsType = "vfat";
+    options = [ "fmask=0022" "dmask=0022" ];
+  };
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/3af48dbd-25d5-40a2-9819-255019bd1659";
-      fsType = "btrfs";
-      options = [ "subvol=@nix" ];
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/d5e350a2-cae9-4374-bdf2-f23446e9e950";
+    fsType = "btrfs";
+    options = [ "subvol=@home" ];
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E6E8-3549";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/d5e350a2-cae9-4374-bdf2-f23446e9e950";
+    fsType = "btrfs";
+    options = [ "subvol=@nix" ];
+  };
+
+  fileSystems."/var/log" = {
+    device = "/dev/disk/by-uuid/d5e350a2-cae9-4374-bdf2-f23446e9e950";
+    fsType = "btrfs";
+    options = [ "subvol=@log" ];
+  };
 
   swapDevices = [ ];
 

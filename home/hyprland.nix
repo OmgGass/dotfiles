@@ -19,7 +19,6 @@
     anytype
     pavucontrol
     slurp 
-    eww
     kdePackages.polkit-kde-agent-1
     socat
     jq
@@ -50,10 +49,10 @@
 	    style.name = "gtk2";
 	  };
 
-    programs.eww = {
-	enable = true;
-	configDir = ../eww;
-	};
+    #programs.eww = {
+	#enable = true;
+	#configDir = ../eww;
+	#};
 
   wayland.windowManager.hyprland = {
     enable = true;

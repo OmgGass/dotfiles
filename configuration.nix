@@ -23,15 +23,19 @@
   zramSwap.algorithm = "zstd";
     
     services.greetd = {
-      enable = true;
-      graphical = true;
-      settings = {
-        default_session = {
-      command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
-          user = "greeter";
-        };
-      };
+  enable = true;
+  settings = {
+    default_session = {
+      command = [
+        "${pkgs.greetd.tuigreet}/bin/tuigreet"
+        "--time"
+        "--cmd"
+        "Hyprland"
+      ];
+      user = "greeter";
     };
+  };
+};
   
   users.users.Garcia = {
     isNormalUser = true;

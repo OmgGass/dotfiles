@@ -12,10 +12,6 @@
   home.homeDirectory = "/home/Garcia"; 
 
   
-  home.file.".config/wallpapers" = {
-    source = ./wallpapers; 
-    recursive = true;
-  };
 
   
   home.packages = with pkgs; [

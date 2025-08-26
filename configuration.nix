@@ -21,9 +21,7 @@
   zramSwap.enable = true;
   zramSwap.memoryPercent = 50;
   zramSwap.algorithm = "zstd";
-
-
-    {
+    
     services.greetd = {
       enable = true;
       graphical = true;
@@ -34,8 +32,7 @@
         };
       };
     };
-  }
-     
+  
   users.users.Garcia = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "networkmanager" "audio" "video" ];

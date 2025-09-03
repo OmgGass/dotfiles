@@ -1,32 +1,61 @@
-#/dotfiles/home/home.nix
 { pkgs, ... }:
 
 {
-  
   imports = [
-    ./devenv.nix
     ./hyprland.nix
+    ./devenv.nix
   ];
 
-  home.username = "Garcia"; 
-  home.homeDirectory = "/home/Garcia"; 
+    nixpkgs.config.allowUnfree = true;
+
+
+home.file.".config/noisetorch/config.toml" = {
+    text = ''
+    Threshold = 95
+    DisplayMonitorSources = false
+    EnableUpdates = true
+    FilterInput = true
+    FilterOutput = false
+    LastUsedInput = ""
+    LastUsedOutput = ""
+  '';
+  };
+
+
+
+  
+ 
+
+
+  home.username = "Garcia";
+  home.homeDirectory = "/home/Garcia";
 
   home.file.".config/wallpapers" = {
     source = ../home/wallpapers;
     recursive = true;
   };
 
-  
-  home.packages = with pkgs; [
-    obs-studio
-    telegram-desktop
-    firefox
-    rofi-wayland
-    discord
-    pkgs.kitty
-    bitwarden
-    pkgs.eww
+  home.sessionPath = [
+    "~/.local/bin"
+    "~/.cargo/bin"
   ];
 
-  home.stateVersion = "25.05"; # Ou a sua versão
-}
+  home.packages = with pkgs; [
+    noisetorch 
+    obs-studio
+    qbittorrent
+    ueberzugpp
+    telegram-desktop
+    firefox
+    vlc
+    bitwarden
+    nautilus
+    spotify
+    discord-canary
+  ];
+
+  home.stateVersion = "25.05";
+
+  
+  }
+

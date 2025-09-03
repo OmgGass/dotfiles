@@ -1,29 +1,44 @@
 {
-  description = "Basic NixOS";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations."nixos-btw" = nixpkgs.lib.nixosSystem {
+  outputs =
+    { nixpkgs, home-manager, ... }@inputs:
+    let
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./configuration.nix
-        ./hardware-configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          nixpkgs.config.allowUnfree = true;
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.Garcia = import ./home/home.nix;
-        }
-      ];
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnFree = true;
+      };
+    in
+    {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./nixos/configuration.nix
+          ./nixos/hardware-configuration.nix
+        ];
+      };
+
+      homeConfigurations = {
+        "Garcia" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./home/home.nix
+          ];
+        };
+      };
     };
-  };
+
+
+
+  
 }

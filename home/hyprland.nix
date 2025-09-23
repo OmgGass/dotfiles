@@ -11,14 +11,15 @@ in
   
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
+    gruvbox-gtk-theme
     xdg-desktop-portal-hyprland
     kitty
-    rofi-wayland
-    anytype
+    rofi
     slurp
     socat
     pamixer
     btop
+    grim 
     fastfetch 
     pavucontrol 
     wl-clipboard
@@ -39,30 +40,11 @@ in
         ];
 
 
-    gtk = {
-    enable = true;
-    theme = {
-      name = "Gruvbox-Dark";
-      package = pkgs.gruvbox-gtk-theme;
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk";
-    style.name = "gtk2";
-  };
-
-
      xdg.portal = {
 	enable = true;
 	extraPortals = with pkgs; [
 		xdg-desktop-portal-hyprland
-		xdg-desktop-portal-gtk
+		
 
 		];
 	};
@@ -72,7 +54,6 @@ in
     enable = true;
     configDir = ../home/eww;
   };
-
 
   
 
@@ -117,8 +98,10 @@ services.dunst = {
     
     extraConfig = ''
       exec-once = waypaper --random --backend swww
-      exec-once = ${pkgs.kdePackages.polkit-kde-agent-1}/lib/polkit-kde-authentication-agent-1
+      exec-once = ${pkgs.kdePackages.polkit-kde-agent-1}
       exec-once = hyprsunset
+      exec-once = ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd --all
+      exec-once = /home/Garcia/dev/discord-rpc-lsp/discord-rpc-lsp
 
     '';
 
@@ -133,28 +116,40 @@ services.dunst = {
       monitor = [ ",1920x1080@60,0x0,1" ];
 
       general = {
-        gaps_in = 2;
-        gaps_out = 4;
-        border_size = 1;
+        gaps_in = 3;
+        gaps_out = 6;
+        border_size = 0;
         resize_on_border = true;
-        # Chaves com "." precisam de aspas no Nix
         "col.active_border" = "rgba(9370DBAA)";
         layout = "dwindle";
       };
 
-      decoration = {
-        rounding = 10;
-        active_opacity = 1.0;
-        inactive_opacity = 0.9;
+      # decoration = {
+      #   rounding = 8;
+      #   active_opacity = 1;
+      #   inactive_opacity = 1;
+      #   blur = {
+      #     enabled = true;
+      #     size = 5;
+      #     passes = 2;
+      #   };
+      # };
+
+          decoration = {
+        rounding = 8;
+        active_opacity = 1;
+        inactive_opacity = 1;
+        dim_inactive = true;
+        dim_strength = 0.1;
         blur = {
           enabled = true;
-          size = 5;
+          size = 6;
           passes = 2;
-        };
-      };
+          new_optimizations = true;
+          ignore_opacity = true; };};
 
-      animations.enabled = true;
 
+     
       input = {
         kb_layout = "us,br";
         kb_variant = ",abnt2";
@@ -168,6 +163,7 @@ services.dunst = {
         };
         sensitivity = 0;
       };
+
 
       dwindle = {
         pseudotile = true;
@@ -193,11 +189,11 @@ services.dunst = {
 
       # Atalhos de teclado
       bind = [
-        "${mainMod} SHIFT, P, exec, grimblast --notify --freeze copysave output $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S').png"
+        "${mainMod} SHIFT, P, exec, grimblast --notify --freeze copysave area $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S').png"
         "${mainMod}, P, exec, grimblast --cursor --notify --freeze copysave output $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S').png"
 
         "${mainMod}, Return, exec, kitty"
-        "${mainMod}, T, exec, telegram-desktop"
+        "${mainMod}, T, exec, Telegram"
         "${mainMod} SHIFT, Q, killactive,"
         "${mainMod}, E, exec, $HOME/.config/rofi/bin/executable_powermenu"
         "${mainMod}, F, fullscreen,"

@@ -4,6 +4,7 @@
   imports = [
     ./hyprland.nix
     ./devenv.nix
+    ./rofi.nix
   ];
 
     nixpkgs.config.allowUnfree = true;
@@ -21,10 +22,6 @@ home.file.".config/noisetorch/config.toml" = {
   '';
   };
 
-
-
-  
- 
 
 
   home.username = "Garcia";
@@ -49,9 +46,16 @@ home.file.".config/noisetorch/config.toml" = {
     firefox
     vlc
     bitwarden
+    anydesk
     nautilus
     spotify
     discord-canary
+    docker
+    
+    #themes
+    noto-fonts-emoji-blob-bin
+    catppuccin-gtk
+    catppuccin-cursors
   ];
 
   home.stateVersion = "25.05";

@@ -10,12 +10,12 @@
     gemini-cli
     lazygit
     bat
-
+    gcc
     vscode
     gh   
     taplo
-    clang
-    nixd
+    pyright
+    typescript-language-server
     bash-language-server
     docker-language-server
     lldb
@@ -24,6 +24,17 @@
     rdkafka
     cmake
     gnumake
+
+    
+
+    #nautilus
+    gvfs
+    ntfs3g
+    dosfstools
+    gtk3
+    gtk4
+    adwaita-icon-theme
+    gnome-keyring
   ];
 
   programs.git = {
@@ -61,6 +72,10 @@
       zj = "zellij";
     };
 
+    extraEnv = ''
+    $env.PATH = ($env.PATH | append $"($env.HOME)/go/bin")
+  '';
+
     extraConfig = ''
       def nixos-update [host: string, user: string] {
           nix flake update;
@@ -82,7 +97,7 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "ferra";
+      theme = "gruvbox";
       editor = {
         line-number = "relative";
         cursorline = true;
@@ -156,29 +171,49 @@
       };
     };
 
-    languages = {
-      language = [
-        {
-          name = "toml";
-          formatter = {
-            command = "taplo";
-            args = [
-              "fmt"
-              "-"
-            ];
-          };
-          auto-format = true;
-        }
-        {
-          name = "nix";
-          formatter = {
-            command = "nixfmt";
-            args = [ "%sh{pwd}/%{buffer_name}" ];
-          };
-          auto-format = true;
-        }
-      ];
+  languages = {
+    language-server = {
+      discord-rpc = {
+        command = "discord-rpc-lsp"; 
+      };
     };
+
+    language = [
+      {
+        name = "toml";
+        formatter = {
+          command = "taplo";
+          args = [ "fmt" "-" ];
+        };
+        auto-format = true;
+      }
+      {
+        name = "nix";
+        formatter = {
+          command = "nixfmt";
+          args = [ "%sh{pwd}/%{buffer_name}" ];
+        };
+        auto-format = true;
+      }
+      {
+        name = "go";
+        language-servers = [ "discord-rpc" ];
+      }
+      {
+        name = "python";
+        language-servers = [ "discord-rpc" ];
+      }
+      {
+        name = "rust";
+        language-servers = [ "discord-rpc" ];
+      }
+      {
+        name = "typescript";
+        language-servers = [ "discord-rpc" ];
+        }
+      
+    ];
   };
 
+};
 }

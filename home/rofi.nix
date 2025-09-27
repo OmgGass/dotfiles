@@ -18,16 +18,16 @@
 
   xdg.configFile."rofi/themes/custom.rasi".text = ''
     * {
-      background-color: #282828;
-      foreground:       #ebdbb2;
-      border-color:     #928374;
+      background-color: #4c3836;
+      foreground:       #ebdbb3;
+      border-color:     #504946;
       border-radius:    12px;
     }
 
     window {
       width:            720px;
       padding:          16px;
-      border:           2px; /* Este borda herda a cor de border-color */
+      border:           2px;
     }
 
     mainbox {
@@ -44,11 +44,12 @@
       enabled:          true;
       padding:          8px 12px;
       border-radius:    10px;
-      background-color: #3c3836; /* Fundo para o prompt também, se quiser */
-    }
+      background-color:  #e9e9e9;
+
+          }
 
     entry {
-      background-color: #3c3836;
+      background-color:  #e9e9e9;
       padding:          8px 12px;
       expand:           true;
       placeholder:      "Search…";
@@ -68,27 +69,27 @@
 
     element {
       padding:          8px 10px;
-      spacing:          10px; /* Espaçamento entre ícone e texto */
+      spacing:          10px; 
       border-radius:    10px;
-      orientation:      horizontal; /* Ícone e texto lado a lado */
-      children:         [ element-icon, element-text ]; /* Explicitamente definimos a ordem */
+      orientation:      horizontal;
+      children:         [ element-icon, element-text ]; 
     }
 
     element-icon {
       size:             28px;
-      vertical-align:   0.5; /* Centraliza o ícone verticalmente */
+      vertical-align:   0.5; 
     }
 
     element-text {
-      vertical-align:   0.5; /* Centraliza o texto verticalmente */
+      vertical-align:   0.5; 
       background-color: inherit;
-      text-color:       inherit;
+      text-color:       #e9e9e9;
     }
 
     element selected {
-      background-color: #458588; /* Cor de seleção */
+      background-color: #458588;
       text-color:       #ebdbb2;
-      border-radius:    10px; /* Borda arredondada para o item selecionado */
+      border-radius:    10px; 
     }
   '';
 }

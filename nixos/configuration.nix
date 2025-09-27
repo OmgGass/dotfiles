@@ -6,14 +6,22 @@
 nix.settings.experimental-features = ["nix-command" "flakes"];
 
 
-   nixpkgs.config = { allowUnfree = true;};
+   
+   nixpkgs.config.allowUnfree = true;
 
    #network and bluetooth 
   networking.networkmanager.enable = true;  
   services.blueman.enable = true;
   hardware.graphics.enable = true;
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings.General.Experimental = true; # Opcional, mas recomendado
+    settings.Policy = {
+      AutoEnable = true;
+      JustWorksAuthorize = true;
+    };
+  };
   hardware.enableAllFirmware = true;
   
   
@@ -37,11 +45,17 @@ nix.settings.experimental-features = ["nix-command" "flakes"];
 
  time.timeZone = "America/Sao_Paulo";
 
+services.desktopManager.gnome.enable = false;
+services.udisks2.enable = true;
+security.polkit.enable = true;
+services.gvfs.enable = true;
+
+
 
 #swap in ram 
  zramSwap = {
     enable = true;
-    memoryPercent = 50;
+    memoryPercent = 100;
     algorithm = "zstd"; };
 
 
@@ -59,13 +73,20 @@ virtualisation.libvirtd.enable = true;
 	enable = true;
 	extraPortals = with pkgs; [
 		xdg-desktop-portal-hyprland
-		xdg-desktop-portal-gtk
 
 		];
+		config = {
+    common = {
+      default = [ "gtk" ];
+    };
+  };
 	};
 
 
 
+
+services.dbus.enable = true;
+#programs.dconf.enable = true;
 
 #services login
 services.displayManager.sddm.enable = true;
@@ -73,6 +94,8 @@ services.displayManager.sddm.wayland.enable = true;
 
 
 security.sudo-rs.enable = true;
+
+
 
 environment.systemPackages = with pkgs; [
   zellij
@@ -84,17 +107,38 @@ environment.systemPackages = with pkgs; [
   helix
   wget
   git-lfs
+  go
   os-prober
   mako
   pavucontrol 
   os-prober
-  dconf
+  pipewire
+  wireplumber
+  xdg-desktop-portal
+  xdg-desktop-portal-gtk
+  xdg-desktop-portal-hyprland
+  nodejs
+  util-linux
+  gnome.gvfs
+
+
+
+
+
 ];
+
+
+
+  programs.direnv = {
+  enable = true;
+  nix-direnv.enable = true;
+  };
 
    services.pipewire = {
      enable = true;
      pulse.enable = true;
      alsa.enable = true;
+     alsa.support32Bit = true;
      jack.enable = true;
 
    };

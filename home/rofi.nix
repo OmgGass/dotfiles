@@ -3,7 +3,7 @@
 {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi; # ou pkgs.rofi-wayland
+    package = pkgs.rofi;
     extraConfig = {
       modi = "drun,run,window";
       show-icons = true;
@@ -29,7 +29,7 @@
       padding:          16px;
       border:           2px; /* Este borda herda a cor de border-color */
     }
-    
+
     mainbox {
       spacing:          12px;
     }
@@ -65,7 +65,7 @@
       padding:          4px 0px;
       background-color: transparent;
     }
-    
+
     element {
       padding:          8px 10px;
       spacing:          10px; /* Espaçamento entre ícone e texto */
@@ -84,7 +84,7 @@
       background-color: inherit;
       text-color:       inherit;
     }
-    
+
     element selected {
       background-color: #458588; /* Cor de seleção */
       text-color:       #ebdbb2;

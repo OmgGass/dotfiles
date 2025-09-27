@@ -2,11 +2,13 @@
 
 { pkgs, ... }:
 
+
 let
   mainMod = "SUPER";
 in
 {
 
+  
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     gruvbox-gtk-theme
@@ -17,11 +19,11 @@ in
     socat
     pamixer
     btop
-    grim
-    fastfetch
-    pavucontrol
+    grim 
+    fastfetch 
+    pavucontrol 
     wl-clipboard
-    grimblast
+    grimblast 
     waypaper
     swww
     waybar
@@ -36,51 +38,39 @@ in
     nwg-look
     bluetui
     hyprland
-  ];
+    libnotify
+        ];
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
 
-    ];
-  };
+     xdg.portal = {
+	enable = true;
+	extraPortals = with pkgs; [
+		xdg-desktop-portal-hyprland
+		
 
-  services.dunst = {
-    enable = true;
-    settings = {
-      global = {
-        separator_color = "frame";
-      };
+		];
+	};
 
-      urgency_low = {
-        background = "#1d2021";
-        foreground = "#d4be98";
-        frame_color = "#7daea3";
-      };
+    
+  #   programs.waybar = {
+  #   enable = true;
+  #   configDir = ../home/waybar;
+  # };
+ 
+  
 
-      urgency_normal = {
-        background = "#1d2021";
-        foreground = "#d4be98";
-        frame_color = "#1d2021";
-      };
 
-      urgency_critical = {
-        background = "#3c1f1e";
-        foreground = "#ddc7a1";
-        frame_color = "#ea6962";
-      };
-    };
-  };
-
+  
   services = {
     network-manager-applet.enable = true;
     blueman-applet.enable = true;
   };
 
+
   wayland.windowManager.hyprland = {
     enable = true;
-
+    
+    
     extraConfig = ''
       exec-once = waybar
       exec-once = waypaper --random --backend swww
@@ -92,7 +82,7 @@ in
     '';
 
     settings = {
-
+      
       env = [
         "QT_QPA_PLATFORMTHEME,gtk3"
         "TERMINAL,kitty"
@@ -110,7 +100,18 @@ in
         layout = "dwindle";
       };
 
-      decoration = {
+      # decoration = {
+      #   rounding = 8;
+      #   active_opacity = 1;
+      #   inactive_opacity = 1;
+      #   blur = {
+      #     enabled = true;
+      #     size = 5;
+      #     passes = 2;
+      #   };
+      # };
+
+          decoration = {
         rounding = 8;
         active_opacity = 1;
         inactive_opacity = 1;
@@ -121,10 +122,10 @@ in
           size = 6;
           passes = 2;
           new_optimizations = true;
-          ignore_opacity = true;
-        };
-      };
+          ignore_opacity = true; };};
 
+
+     
       input = {
         kb_layout = "us,br";
         kb_variant = ",abnt2";
@@ -139,6 +140,7 @@ in
         sensitivity = 0;
       };
 
+
       dwindle = {
         pseudotile = true;
         preserve_split = true;
@@ -147,6 +149,7 @@ in
 
       misc.disable_hyprland_logo = true;
 
+      # Regras de janelas
       windowrule = [
         "opaque, class:mpv"
         "opaque, class: zen"
@@ -160,6 +163,7 @@ in
         "float,class:^(org.telegram.desktop)$,title:^(Media*)$"
       ];
 
+      # Atalhos de teclado
       bind = [
         "${mainMod} SHIFT, P, exec, grimblast --notify --freeze copysave area $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S').png"
         "${mainMod}, P, exec, grimblast --cursor --notify --freeze copysave output $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S').png"
@@ -232,7 +236,7 @@ in
         "${mainMod} SHIFT, up, movewindow, u"
         "${mainMod} SHIFT, down, movewindow, d"
       ];
-
+      
       bindm = [
         "${mainMod}, mouse:272, movewindow"
         "${mainMod} SHIFT, mouse:272, resizewindow"

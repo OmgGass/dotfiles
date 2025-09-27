@@ -6,21 +6,25 @@
     ./devenv.nix
     ./rofi.nix
     ./waybar.nix
+    ./dunst.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.allowUnfree = true;
 
-  home.file.".config/noisetorch/config.toml" = {
+
+home.file.".config/noisetorch/config.toml" = {
     text = ''
-      Threshold = 95
-      DisplayMonitorSources = false
-      EnableUpdates = true
-      FilterInput = true
-      FilterOutput = false
-      LastUsedInput = ""
-      LastUsedOutput = ""
-    '';
+    Threshold = 95
+    DisplayMonitorSources = false
+    EnableUpdates = true
+    FilterInput = true
+    FilterOutput = false
+    LastUsedInput = ""
+    LastUsedOutput = ""
+  '';
   };
+
+
 
   home.username = "Garcia";
   home.homeDirectory = "/home/Garcia";
@@ -36,7 +40,7 @@
   ];
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    noisetorch
+    noisetorch 
     obs-studio
     qbittorrent
     ueberzugpp
@@ -52,7 +56,7 @@
     premid
     discord
     pulseaudio
-
+    
     #themes
     noto-fonts-emoji-blob-bin
     catppuccin-gtk
@@ -69,10 +73,11 @@
     powerline-symbols
     nerd-fonts.hack
     dejavu_fonts
-
+    
   ];
 
-  gtk = {
+
+gtk = {
     enable = true;
     theme = {
       name = "Gruvbox-Dark";
@@ -87,4 +92,6 @@
 
   home.stateVersion = "25.05";
 
-}
+  
+  }
+

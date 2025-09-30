@@ -81,9 +81,9 @@ programs.waybar = {
        format-bluetooth = "{volume}%  {icon} {format_source}";
         format-source = ""; 
         format-source-muted = "";
-        format-muted = " {format_source}";
+        format-muted = "  {format_source} ";
         on-click-middle = "pavucontrol"; 
-        on-click-left = "pactl set-sink-mute alsa_output.pci-0000_02_00.6.analog-stereo toggle";
+        on-click = "pactl set-sink-mute alsa_output.pci-0000_02_00.6.analog-stereo toggle";
         on-click-right = "pactl set-source-mute alsa_input.pci-0000_02_00.6.analog-stereo toggle";        
         format-icons = {
           

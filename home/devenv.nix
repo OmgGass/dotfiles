@@ -3,7 +3,11 @@
 {
   home.packages = with pkgs; [
     p7zip
-    rustup
+    cargo
+    rustc
+    rustfmt
+    clippy
+    rust-analyzer
     fd
     bear
     eza
@@ -12,7 +16,7 @@
     bat
     gcc
     vscode
-    gh   
+    gh
     taplo
     pyright
     typescript-language-server
@@ -24,8 +28,6 @@
     rdkafka
     cmake
     gnumake
-
-    
 
     #nautilus
     gvfs
@@ -73,8 +75,8 @@
     };
 
     extraEnv = ''
-    $env.PATH = ($env.PATH | append $"($env.HOME)/go/bin")
-  '';
+      $env.PATH = ($env.PATH | append $"($env.HOME)/go/bin")
+    '';
 
     extraConfig = ''
       def nixos-update [host: string, user: string] {
@@ -171,49 +173,55 @@
       };
     };
 
-  languages = {
-    language-server = {
-      discord-rpc = {
-        command = "discord-rpc-lsp"; 
+    languages = {
+      language-server = {
+        discord-rpc = {
+          command = "discord-rpc-lsp";
+        };
       };
+
+      language = [
+        {
+          name = "toml";
+          formatter = {
+            command = "taplo";
+            args = [
+              "fmt"
+              "-"
+            ];
+          };
+          auto-format = true;
+        }
+        {
+          name = "nix";
+          formatter = {
+            command = "nixfmt";
+            args = [ "%sh{pwd}/%{buffer_name}" ];
+          };
+          auto-format = true;
+        }
+        {
+          name = "go";
+          language-servers = [ "discord-rpc" ];
+        }
+        {
+          name = "python";
+          language-servers = [ "discord-rpc" ];
+        }
+        {
+          name = "rust";
+          language-servers = [
+            "rust-analyzer"
+            "discord-rpc"
+          ];
+        }
+        {
+          name = "typescript";
+          language-servers = [ "discord-rpc" ];
+        }
+
+      ];
     };
 
-    language = [
-      {
-        name = "toml";
-        formatter = {
-          command = "taplo";
-          args = [ "fmt" "-" ];
-        };
-        auto-format = true;
-      }
-      {
-        name = "nix";
-        formatter = {
-          command = "nixfmt";
-          args = [ "%sh{pwd}/%{buffer_name}" ];
-        };
-        auto-format = true;
-      }
-      {
-        name = "go";
-        language-servers = [ "discord-rpc" ];
-      }
-      {
-        name = "python";
-        language-servers = [ "discord-rpc" ];
-      }
-      {
-        name = "rust";
-        language-servers = [ "discord-rpc" ];
-      }
-      {
-        name = "typescript";
-        language-servers = [ "discord-rpc" ];
-        }
-      
-    ];
   };
-
-};
 }

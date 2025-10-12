@@ -17,7 +17,7 @@ in
     rofi
     slurp
     socat
-    pamixer
+    
     btop
     grim 
     fastfetch 
@@ -30,7 +30,6 @@ in
     dunst
     hyprsunset
     pavucontrol
-    pamixer
     brightnessctl
     playerctl
     jq

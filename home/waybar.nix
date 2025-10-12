@@ -48,13 +48,13 @@ programs.waybar = {
 
       "custom/appmenu" = {
         format = "Apps";
-        on-click = "shutdown now";
+        #on-click = "shutdown now";
         tooltip = false;
       };
 
       "custom/appmenuicon" = {
         format = "";
-        on-click = "shutdown now";
+        #on-click = "shutdown now";
         tooltip = false;
       };
 

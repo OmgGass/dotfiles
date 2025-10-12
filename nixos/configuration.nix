@@ -23,6 +23,7 @@ nix.settings.experimental-features = ["nix-command" "flakes"];
     };
   };
   hardware.enableAllFirmware = true;
+  programs.steam.enable = true;
   
   
   # Use the systemd-boot EFI boot loader.

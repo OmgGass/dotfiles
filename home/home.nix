@@ -56,6 +56,9 @@ home.file.".config/noisetorch/config.toml" = {
     premid
     discord
     pulseaudio
+    dust
+    
+    
     
     #themes
     noto-fonts-emoji-blob-bin

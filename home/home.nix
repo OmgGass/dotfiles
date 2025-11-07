@@ -9,22 +9,19 @@
     ./dunst.nix
   ];
 
-    nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
-
-home.file.".config/noisetorch/config.toml" = {
+  home.file.".config/noisetorch/config.toml" = {
     text = ''
-    Threshold = 95
-    DisplayMonitorSources = false
-    EnableUpdates = true
-    FilterInput = true
-    FilterOutput = false
-    LastUsedInput = ""
-    LastUsedOutput = ""
-  '';
+      Threshold = 95
+      DisplayMonitorSources = false
+      EnableUpdates = true
+      FilterInput = true
+      FilterOutput = false
+      LastUsedInput = ""
+      LastUsedOutput = ""
+    '';
   };
-
-
 
   home.username = "Garcia";
   home.homeDirectory = "/home/Garcia";
@@ -40,14 +37,14 @@ home.file.".config/noisetorch/config.toml" = {
   ];
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    noisetorch 
+    noisetorch
     obs-studio
     qbittorrent
     ueberzugpp
     telegram-desktop
     firefox
     vlc
-    bitwarden
+    bitwarden-desktop
     anydesk
     nautilus
     spotify
@@ -55,11 +52,11 @@ home.file.".config/noisetorch/config.toml" = {
     docker
     premid
     discord
+    pkgs.vencord
     pulseaudio
     dust
-    
-    
-    
+    pamixer
+
     #themes
     noto-fonts-emoji-blob-bin
     catppuccin-gtk
@@ -69,18 +66,17 @@ home.file.".config/noisetorch/config.toml" = {
     #fonts
     jetbrains-mono
     noto-fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     twemoji-color-font
     font-awesome
     powerline-fonts
     powerline-symbols
     nerd-fonts.hack
     dejavu_fonts
-    
+
   ];
 
-
-gtk = {
+  gtk = {
     enable = true;
     theme = {
       name = "Gruvbox-Dark";
@@ -95,6 +91,4 @@ gtk = {
 
   home.stateVersion = "25.05";
 
-  
-  }
-
+}

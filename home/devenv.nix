@@ -21,13 +21,14 @@
     pyright
     typescript-language-server
     bash-language-server
-    docker-language-server
     lldb
     nil
     usbutils
     rdkafka
     cmake
     gnumake
+    nixfmt-classic
+    lazydocker
 
     #nautilus
     gvfs
@@ -39,21 +40,31 @@
     gnome-keyring
   ];
 
-  programs.git = {
-    enable = true;
-    userName = "omggass";
-    userEmail = "omggass@gmail.com";
-    signing = {
-      signByDefault = true;
-      key = "AE8CE548611A623A";
+programs.git = {
+  enable = true;
+  
+  settings = {
+    user = {
+      name = "omggass";
+      email = "omggass@gmail.com";
+      signingkey = "AE8CE548611A623A";
     };
-    delta.enable = true;
-    delta.options = {
-      "side-by-side" = true;
-      navigate = true;
+    
+    commit = {
+      gpgsign = true;
     };
   };
+};
 
+programs.delta = {
+  enable = true;
+  enableGitIntegration = true;
+  
+  options = {
+    side-by-side = true;
+    navigate = true;
+  };
+};
   programs.nushell = {
     enable = true;
     settings = {
@@ -89,11 +100,7 @@
 
   programs.yazi = {
     enable = true;
-    settings = {
-      mgr = {
-        show_hidden = true;
-      };
-    };
+    settings = { mgr = { show_hidden = true; }; };
   };
 
   programs.helix = {
@@ -106,18 +113,14 @@
         end-of-line-diagnostics = "hint";
         indent-heuristic = "tree-sitter";
 
-        lsp = {
-          display-inlay-hints = true;
-        };
+        lsp = { display-inlay-hints = true; };
 
         file-picker = {
           hidden = false;
           git-global = false;
         };
 
-        soft-wrap = {
-          enable = true;
-        };
+        soft-wrap = { enable = true; };
 
         cursor-shape = {
           insert = "bar";
@@ -125,13 +128,9 @@
           select = "underline";
         };
 
-        indent-guides = {
-          render = true;
-        };
+        indent-guides = { render = true; };
 
-        inline-diagnostics = {
-          cursor-line = "warning";
-        };
+        inline-diagnostics = { cursor-line = "warning"; };
       };
 
       keys = {
@@ -139,10 +138,7 @@
           y = "yank_joined_to_clipboard";
           p = [ "paste_clipboard_after" ];
           P = [ "replace_selections_with_clipboard" ];
-          d = [
-            "yank_joined_to_clipboard"
-            "delete_selection"
-          ];
+          d = [ "yank_joined_to_clipboard" "delete_selection" ];
           z = "move_next_word_start";
           "C-s" = ":write";
           w = "move_next_sub_word_start";
@@ -154,41 +150,26 @@
           y = "yank_joined_to_clipboard";
           p = [ "replace_selections_with_clipboard" ];
           P = [ "replace_selections_with_clipboard" ];
-          d = [
-            "yank_joined_to_clipboard"
-            "delete_selection"
-          ];
-          c = [
-            "trim_selections"
-            "change_selection"
-          ];
+          d = [ "yank_joined_to_clipboard" "delete_selection" ];
+          c = [ "trim_selections" "change_selection" ];
           w = "extend_next_sub_word_start";
           b = "extend_prev_sub_word_start";
           e = "extend_next_sub_word_end";
         };
 
-        insert = {
-          "C-space" = "completion";
-        };
+        insert = { "C-space" = "completion"; };
       };
     };
 
     languages = {
-      language-server = {
-        discord-rpc = {
-          command = "discord-rpc-lsp";
-        };
-      };
+      language-server = { discord-rpc = { command = "discord-rpc-lsp"; }; };
 
       language = [
         {
           name = "toml";
           formatter = {
             command = "taplo";
-            args = [
-              "fmt"
-              "-"
-            ];
+            args = [ "fmt" "-" ];
           };
           auto-format = true;
         }
@@ -210,10 +191,7 @@
         }
         {
           name = "rust";
-          language-servers = [
-            "rust-analyzer"
-            "discord-rpc"
-          ];
+          language-servers = [ "rust-analyzer" "discord-rpc" ];
         }
         {
           name = "typescript";

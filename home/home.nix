@@ -23,6 +23,12 @@
     '';
   };
 
+
+  programs.direnv = {
+  enable = true;
+  nix-direnv.enable = true; 
+};
+
   home.username = "Garcia";
   home.homeDirectory = "/home/Garcia";
 

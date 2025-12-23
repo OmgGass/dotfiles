@@ -191,6 +191,10 @@ in
         ",XF86AudioLowerVolume, exec, pamixer -d 10"
         ",XF86MonBrightnessUp, exec, brightnessctl set 10%+"
         ",XF86MonBrightnessDown, exec, brightnessctl set 10%-"
+        ",XF86AudioPlay, exec, playerctl play-pause"
+        ",XF86AudioPause, exec, playerctl play-pause"
+        ",XF86AudioNext, exec, playerctl next"
+        ",XF86AudioPrev, exec, playerctl previous"
 
         "${mainMod}, 1, workspace, 1"
         "${mainMod}, 2, workspace, 2"

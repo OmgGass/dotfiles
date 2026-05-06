@@ -149,7 +149,7 @@ in
       misc.disable_hyprland_logo = true;
 
       # Regras de janelas
-      windowrule = [
+      windowrulev2 = [
         "opaque, class:mpv"
         "opaque, class: zen"
         "float,title:^(Open file)$"
@@ -157,8 +157,6 @@ in
         "float,class:blueman-manager"
         "float,class:waypaper"
         "float,class:org.kde.polkit-kde-authentication-agent-1"
-      ];
-      windowrulev2 = [
         "float,class:^(org.telegram.desktop)$,title:^(Media*)$"
       ];
 

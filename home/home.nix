@@ -51,17 +51,25 @@
     firefox
     vlc
     bitwarden-desktop
-    anydesk
     nautilus
     spotify
     discord-canary
+    equicord
     docker
     premid
     discord
     pkgs.vencord
+    vesktop
     pulseaudio
     dust
     pamixer
+
+
+    pulseeffects-legacy      # UI amigável para filtros LADSPA / LV2
+    lsp-plugins              # Equalizador, pitch-shift, vocoder, auto
+    calf                     # clássicos: reverb, compressor, 
+    jack2
+    easyeffects                # low-latency bridge
 
     #themes
     noto-fonts-emoji-blob-bin

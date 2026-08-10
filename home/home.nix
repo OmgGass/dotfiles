@@ -9,6 +9,11 @@
     ./dunst.nix
   ];
 
+<<<<<<< HEAD
+=======
+  nixpkgs.config.allowUnfree = true;
+
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
   home.file.".config/noisetorch/config.toml" = {
     text = ''
       Threshold = 95

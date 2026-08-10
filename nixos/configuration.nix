@@ -45,6 +45,10 @@
 
   time.timeZone = "America/Sao_Paulo";
 
+<<<<<<< HEAD
+=======
+  services.desktopManager.gnome.enable = false;
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
   services.udisks2.enable = true;
   security.polkit.enable = true;
   services.gvfs.enable = true;
@@ -69,11 +73,19 @@
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
+<<<<<<< HEAD
       xdg-desktop-portal-gtk
     ];
     config = {
       common = {
         default = [ "hyprland" "gtk" ];
+=======
+
+    ];
+    config = {
+      common = {
+        default = [ "gtk" ];
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
       };
     };
   };
@@ -100,6 +112,11 @@
     go
     os-prober
     mako
+<<<<<<< HEAD
+=======
+    pavucontrol
+    os-prober
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
     pipewire
     wireplumber
     xdg-desktop-portal
@@ -107,6 +124,11 @@
     xdg-desktop-portal-hyprland
     nodejs
     util-linux
+<<<<<<< HEAD
+=======
+    gnome.gvfs
+
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
   ];
 
   programs.direnv = {

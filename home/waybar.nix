@@ -96,8 +96,13 @@
           format-source-muted = "";
           format-muted = "  {format_source} ";
           on-click-middle = "pavucontrol";
+<<<<<<< HEAD
           on-click = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
           on-click-right = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+=======
+          on-click = "pactl set-sink-mute alsa_output.pci-0000_02_00.6.analog-stereo toggle";
+          on-click-right = "pactl set-source-mute alsa_input.pci-0000_02_00.6.analog-stereo toggle";
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
           format-icons = {
 
             headphone = " ";

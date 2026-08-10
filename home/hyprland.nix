@@ -1,9 +1,22 @@
+<<<<<<< HEAD
 { pkgs, ... }:
 
+=======
+# /etc/nixos/home/seu-usuario/hyprland.nix
+
+{ pkgs, ... }:
+
+
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
 let
   mainMod = "SUPER";
 in
 {
+<<<<<<< HEAD
+=======
+
+  
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     gruvbox-gtk-theme
@@ -12,17 +25,31 @@ in
     rofi
     slurp
     socat
+<<<<<<< HEAD
     btop
     grim
     fastfetch
     pavucontrol
     wl-clipboard
     grimblast
+=======
+    
+    btop
+    grim 
+    fastfetch 
+    pavucontrol 
+    wl-clipboard
+    grimblast 
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
     waypaper
     swww
     waybar
     dunst
     hyprsunset
+<<<<<<< HEAD
+=======
+    pavucontrol
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
     brightnessctl
     playerctl
     jq
@@ -31,28 +58,70 @@ in
     bluetui
     hyprland
     libnotify
+<<<<<<< HEAD
   ];
 
+=======
+        ];
+
+
+     xdg.portal = {
+	enable = true;
+	extraPortals = with pkgs; [
+		xdg-desktop-portal-hyprland
+		
+
+		];
+	};
+
+    
+  #   programs.waybar = {
+  #   enable = true;
+  #   configDir = ../home/waybar;
+  # };
+ 
+  
+
+
+  
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
   services = {
     network-manager-applet.enable = true;
     blueman-applet.enable = true;
   };
 
+<<<<<<< HEAD
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
     configType = "hyprlang";
 
+=======
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    
+    
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
     extraConfig = ''
       exec-once = waybar
       exec-once = waypaper --random --backend swww
       exec-once = ${pkgs.kdePackages.polkit-kde-agent-1}
       exec-once = hyprsunset
       exec-once = ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd --all
+<<<<<<< HEAD
       exec-once = $HOME/dev/discord-rpc-lsp/discord-rpc-lsp
     '';
 
     settings = {
+=======
+      exec-once = /home/Garcia/dev/discord-rpc-lsp/discord-rpc-lsp
+
+    '';
+
+    settings = {
+      
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
       env = [
         "QT_QPA_PLATFORMTHEME,gtk3"
         "TERMINAL,kitty"
@@ -70,7 +139,22 @@ in
         layout = "dwindle";
       };
 
+<<<<<<< HEAD
       decoration = {
+=======
+      # decoration = {
+      #   rounding = 8;
+      #   active_opacity = 1;
+      #   inactive_opacity = 1;
+      #   blur = {
+      #     enabled = true;
+      #     size = 5;
+      #     passes = 2;
+      #   };
+      # };
+
+          decoration = {
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
         rounding = 8;
         active_opacity = 1;
         inactive_opacity = 1;
@@ -81,15 +165,26 @@ in
           size = 6;
           passes = 2;
           new_optimizations = true;
+<<<<<<< HEAD
           ignore_opacity = true;
         };
       };
 
+=======
+          ignore_opacity = true; };};
+
+
+     
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
       input = {
         kb_layout = "us,br";
         kb_variant = ",abnt2";
         kb_options = "grp:win_space_toggle";
+<<<<<<< HEAD
         follow_mouse = 1;
+=======
+        follow_mouse = true;
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
         scroll_method = "2fg";
         touchpad = {
           natural_scroll = true;
@@ -99,6 +194,10 @@ in
         sensitivity = 0;
       };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
       dwindle = {
         pseudotile = true;
         preserve_split = true;
@@ -108,7 +207,11 @@ in
       misc.disable_hyprland_logo = true;
 
       # Regras de janelas
+<<<<<<< HEAD
       windowrule = [
+=======
+      windowrulev2 = [
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
         "opaque, class:mpv"
         "opaque, class: zen"
         "float,title:^(Open file)$"
@@ -196,7 +299,11 @@ in
         "${mainMod} SHIFT, up, movewindow, u"
         "${mainMod} SHIFT, down, movewindow, d"
       ];
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 28a433803fff1524f8b9eaefe195703481583d3e
       bindm = [
         "${mainMod}, mouse:272, movewindow"
         "${mainMod} SHIFT, mouse:272, resizewindow"

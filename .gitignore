@@ -1,0 +1,14 @@
+# Nix build results
+result
+result-*
+
+# Secrets — nunca versionar chaves/credenciais em texto puro
+*.env
+.env
+.env.*
+*.pem
+*.key
+secrets/
+
+# Editor/OS
+.DS_Store
